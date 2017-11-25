@@ -2,26 +2,28 @@
 // @name        PTthanks
 // @namespace   @github.com/impressioncr
 // @description pt自动感谢,自动签到
-// @include     *tp.m-team.cc*
+// @include     *tp.m-team*
 // @include     *totheglory*
-// @include     *music-vid.com*
-// @include     *hdchina.org*
-// @include     *chdbits.co*
-// @include     *pt.hd4fans.org*
-// @include     *hdsky.me*
-// @include     *hdcmct.org*
-// @include     *bithumen.be*
-// @include     *hd-torrents.org*
-// @include     *bitme*
+// @include     *-vid.com*
+// @include     *hdchina*
+// @include     *chdbits*
+// @include     *pt.hd4fans*
+// @include     *hdsky*
+// @include     *hdcmct*
+// @include     *bithumen*
+// @include     *hd-torrents*
+// @include     *itme*
 // @include     *etv*
+// @include     *pornbits*
 // @include     *264*
-// @include     *empornium.me*
-// @include     *filelist.ro*
-// @match *://*/*
+// @include     *mpornium.me*
+// @include     *.click*
+// @include     *ilelist.ro*
+// @include     *pretome*
 // @grant none
 // @version     1.0
 // ==/UserScript==
-(function (window, $) {
+(function (window) {
   var url = window.location.href
   var btnList = []
   setTimeout(function() {
@@ -58,14 +60,31 @@
       btm,
       fl
     ]
+    // the sites
+    if (window.location.host.indexOf('the') === 0) {
+      send()
+    }
+    // pornBits
+    if (window.location.host.indexOf('pornbits') === 0) {
+      var pb = document.querySelectorAll('.btn-info')[0].href || ''
+      if(pb.includes('thank')) {
+        document.querySelectorAll('.btn-info')[0].click()
+      }
+    }
+    // ptm
+    if (window.location.host.indexOf('pretome') === 0) {
+      if (window.location.search.indexOf('?id=') === 0)
+      var torrentId = window.location.search.slice(4)
+      window.location.href = 'thanks.php?fid=' + torrentId
+    }
     btnList.forEach(function (btn) {
-    var click = url === window.sessionStorage.getItem('url')
-    if (btn && !click) {
-      setTimeout(function(){
+      var click = url === window.sessionStorage.getItem('url')
+      if (btn && !click) {
+        setTimeout(function() {
           window.sessionStorage.setItem('url', url)
           btn.click()
         }, 500)
       }
     })
   },500)
-})(window,$)
+})(window)
