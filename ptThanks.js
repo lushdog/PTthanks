@@ -3,7 +3,7 @@
 // @namespace   @github.com/impressioncr
 // @description pt自动感谢,自动签到
 // @include     *tp.m-team.cc*
-// @include     *totheglory.im*
+// @include     *totheglory*
 // @include     *music-vid.com*
 // @include     *hdchina.org*
 // @include     *chdbits.co*
