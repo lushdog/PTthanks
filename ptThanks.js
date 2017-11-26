@@ -34,7 +34,7 @@
     var mvThx = document.getElementById('thxForm') || ''
     var btH = document.getElementsByName('thanks')[1] || ''
     var hdt = document.getElementById('ty') || ''
-    var x2 = document.getElementById('thanksbutton') || '' // x2, emp
+    var x264 = document.getElementById('thanksbutton') || '' // x264, emp
     if (mvThx) {
       var mv = mvThx.getElementsByTagName('input')[0] || ''
     }
@@ -55,7 +55,7 @@
       mv,
       btH,
       hdt,
-      x2,
+      x264,
       hdc,
       btm,
       fl
@@ -73,9 +73,10 @@
     }
     // ptm
     if (window.location.host.indexOf('pretome') === 0) {
-      if (window.location.search.indexOf('?id=') === 0)
-      var torrentId = window.location.search.slice(4)
-      window.location.href = 'thanks.php?fid=' + torrentId
+      if (window.location.search.indexOf('?id=') === 0) {
+        var torrentId = window.location.search.slice(4)
+        window.location.href = 'thanks.php?fid=' + torrentId
+      }
     }
     btnList.forEach(function (btn) {
       var click = url === window.sessionStorage.getItem('url')
@@ -86,5 +87,5 @@
         }, 500)
       }
     })
-  },500)
+  }, 500)
 })(window)
